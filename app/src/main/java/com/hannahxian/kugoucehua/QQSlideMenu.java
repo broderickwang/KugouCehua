@@ -1,6 +1,7 @@
 package com.hannahxian.kugoucehua;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -13,13 +14,13 @@ import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 
 /**
- * Created by 王成达 on 2017/7/17.
+ * Created by 王成达 on 2017/7/18.
  * Version:1.0
  * Email:wangchengda1990@gamil.com
  * Description:
  */
 
-public class XSlideMenu extends HorizontalScrollView {
+public class QQSlideMenu extends HorizontalScrollView {
     private final String TAG = "XSlidemenu";
 
     private int mMenuMargin = 62;
@@ -51,21 +52,19 @@ public class XSlideMenu extends HorizontalScrollView {
             return super.onFling(e1, e2, velocityX, velocityY);
         }
     };
-
-    public XSlideMenu(Context context) {
+    public QQSlideMenu(Context context) {
         this(context,null);
     }
 
-    public XSlideMenu(Context context, AttributeSet attrs) {
+    public QQSlideMenu(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs,0);
     }
 
-    public XSlideMenu(Context context, AttributeSet attrs, int defStyleAttr) {
+    public QQSlideMenu(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         mGestureDetector = new GestureDetector(context,mListener);
     }
-
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         mIsIntercept = false;
@@ -107,7 +106,7 @@ public class XSlideMenu extends HorizontalScrollView {
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         //l mMenuWidth - > 0
-        float scale = 1f * l / mMenuWidth;// scale 变化是 1 - 0
+        /*float scale = 1f * l / mMenuWidth;// scale 变化是 1 - 0
         float rightScale = 0.7f+ scale*0.3f;
         float rightScale2 = 0.7f+ (l/mMenuWidth)*0.3f;
         ViewCompat.setPivotX(mContentView,0);
@@ -120,9 +119,9 @@ public class XSlideMenu extends HorizontalScrollView {
         float leftScale = 0.6f+(1-scale)*0.4f;
         Log.d(TAG, "onScrollChanged: "+leftScale);
         ViewCompat.setScaleX(mMenuView,leftScale);
-        ViewCompat.setScaleY(mMenuView,leftScale);
+        ViewCompat.setScaleY(mMenuView,leftScale);*/
 
-//        ViewCompat.setTranslationX(mMenuView,(1-scale)*0.25f);
+        ViewCompat.setTranslationX(mMenuView,l*0.6f);
 
         super.onScrollChanged(l, t, oldl, oldt);
     }

@@ -104,6 +104,7 @@ public class SlideMenu extends HorizontalScrollView {
         ViewCompat.setAlpha(mMenuView,leftAlpha);
         // 缩放 0.7f - 1.0f
         float leftScale = 0.7f + (1-scale)*0.3f;
+
         ViewCompat.setScaleX(mMenuView,leftScale);
         ViewCompat.setScaleY(mMenuView, leftScale);
 
